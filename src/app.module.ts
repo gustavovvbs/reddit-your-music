@@ -8,6 +8,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ReviewModule } from './review/review.module';
 import { CommentModule } from './comment/comment.module';
+import { SpotifyModule } from './external/spotify/spotify.module';
+import { TracksModule } from './tracks/tracks.module';
 import { Comment } from './comment/comment.entity';
 
 @Module({
@@ -33,6 +35,8 @@ import { Comment } from './comment/comment.entity';
     UsersModule,
     ReviewModule,
     CommentModule,
+    SpotifyModule,
+    TracksModule,
     ],
 })
 export class AppModule {}

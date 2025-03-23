@@ -28,8 +28,8 @@ export class ReviewService {
             return this.reviewRepository.save(review);
         }
 
-    async findBySpotifyId(spotifyId: string): Promise<Review | null> {
-        return this.reviewRepository.findOne({ where: { spotifyId } });
+    async findBySpotifyId(spotifyId: string): Promise<Review[]> {
+        return this.reviewRepository.find({ where: { spotifyId } });
     }
 
     async voteReview(

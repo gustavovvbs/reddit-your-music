@@ -18,14 +18,19 @@ export class ReviewController {
     async createReview(
         @Body() createReviewDTO: CreateReviewDTO,
     ): Promise<ReviewResponseDto> {
-        const review =  await this.reviewService.createReview(
-            createReviewDTO.spotifyId,
-            createReviewDTO.reviewContent,
-            createReviewDTO.rating,
-            createReviewDTO.userId
-        );
-
-        return plainToInstance(ReviewResponseDto, review);
+        try {
+            const review = await this.reviewService.createReview(
+                createReviewDTO.spotifyId,
+                createReviewDTO.reviewContent,
+                createReviewDTO.rating,
+                createReviewDTO.userId
+            );
+    
+            return plainToInstance(ReviewResponseDto, review);
+        } catch (error) {
+            this.logger.error(`Error creating review: ${error.message}`, error.stack);
+            throw error;
+        }
     }
 
     @Get(":id")

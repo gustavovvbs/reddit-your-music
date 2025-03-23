@@ -1,4 +1,11 @@
+import { IsBoolean, IsNotEmpty, IsNumber } from 'class-validator';
+
 export class VoteReviewDto {
-    reviewId: number;
-    vote: boolean
+  @IsNumber()
+  @IsNotEmpty()
+  reviewId: number;
+
+  @IsBoolean()
+  @IsNotEmpty()
+  vote: boolean;
 }
