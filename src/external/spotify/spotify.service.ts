@@ -72,7 +72,7 @@ export class SpotifyService {
 			);
 
 			this.logger.debug(`Fetched data from Spotify: ${JSON.stringify(response.data)}`);
-			return plainToInstance(SpotifyTrackDto, response.data);
+			return plainToInstance(SpotifyTrackDto, response.data, {excludeExtraneousValues: true});
 		} catch (error) {
 			this.logger.error(`Error fetching ${spotifyType} with ID ${spotifyId}`, error);
 			throw error;
